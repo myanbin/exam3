@@ -21,4 +21,8 @@ router.post('/upload', upload.single('avatar'), function (req, res, next) {
   });
 });
 
+router.get('/myanbin', function(req, res, next) {
+  res.json({ username: 'myanbin', email: 'myanbin@gmail.com', password: '123456' });
+});
+
 module.exports = router;
