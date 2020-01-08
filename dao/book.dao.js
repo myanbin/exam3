@@ -1,24 +1,21 @@
 const mongoose = require('mongoose');
 
-const BookModel = mongoose.Model('Book');
+let Book = mongoose.model("Book");
 
-function addBook(book, callback) {
-  BookModel.create(book, function (err, book) {
-    console.log(book);
-    callback(book.toObject());
-  });
+function addBook(book) {
+  return Book.create(book);
 }
 
-function findBooks(callback) {
-  BookModel.find({}).exec(function (err, books) {
-    callback(books);
-  });
+function findBooks() {
+  return Book.find({}).exec();
 }
 
-function deleteBook(id, callback) {
-  BookModel.findByIndexAndDelete(id, function () {
-    callback({});
-  });
+function deleteBook(id) {
+  return Book.findByIdAndRemove(id);
 }
 
-module.exports = { addBook, deleteBook, findBooks }
+function updateBook(id, book) {
+  return Book.findByIdAndUpdate(id, book);
+}
+
+module.exports = { addBook, deleteBook, findBooks, updateBook };

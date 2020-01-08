@@ -1,14 +1,18 @@
 const mongoose = require('mongoose');
+// Use q. Note that you **must** use `require('q').Promise`.
+mongoose.Promise = require('q').Promise;
 
-const BookSchema = new mongoose.Schema({
+const Schema = mongoose.Schema;
+
+const BookSchema = Schema({
   title: String,
   price: Number
 });
 
-const UserSchema = new mongoose.Schema({
+const UserSchema = Schema({
   username: String,
   password: String
 });
 
 mongoose.model('Book', BookSchema);
-mongoose.model('User', UserSchema); 
+mongoose.model('User', UserSchema);

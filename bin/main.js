@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
-var http = require('http');
+const http = require('http');
+// models 模块应该在 app 之前被加载
+require('../models');
 
 const app = require('../app');
 const server = http.createServer(app);
-
-require('../models');
 
 mongoose.connect('mongodb://localhost:27017/myapp', { useMongoClient: true }, function (err) {
   console.log('MongoDB 已连接');
@@ -15,4 +15,4 @@ mongoose.connect('mongodb://localhost:27017/myapp', { useMongoClient: true }, fu
 
 server.on('close', function () {
   mongoose.disconnect();
-})
+});

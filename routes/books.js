@@ -1,40 +1,34 @@
 var express = require('express');
 var router = express.Router();
 
-var books = require('../db.json').books;
-
-console.log(books);
+const bookDao = require('../dao/book.dao');
 
 router.get('/', function(req, res, next) {
-  res.json(books);
+  bookDao.findBooks().then(books => {
+    res.json(books);
+  });
 });
 
 router.post('/', function (req, res, next) {
   const book = req.body;
-  const bookid = books.reduce((prev, curr) => prev.id > curr.id ? prev.id : curr.id, 0) + 1;
-  books.push({
-    id: bookid,
-    ...book
+  bookDao.addBook(book).then(book => {
+    res.json(book);
   });
-  res.json(books);
 });
 
 router.put('/:id', function (req, res, next) {
   const book = req.body;
   const bookid = parseInt(req.params.id);
-  const cursor = books.findIndex(book => book.id === bookid);
-  books.splice(cursor, 1, {
-    id: bookid,
-    ...book
-  });
-  res.json(books);
+  bookDao.updateBook(bookid, body).then(book => {
+    res.json(book);
+  })
 });
 
 router.delete('/:id', function (req, res, next) {
-  const bookid = parseInt(req.params.id);
-  const cursor = books.findIndex(book => book.id === bookid);
-  books.splice(cursor, 1);
-  res.json(books);
+  const bookid = req.params.id;
+  bookDao.deleteBook(bookid).then(() => {
+    res.json({});
+  });
 });
 
 module.exports = router;
