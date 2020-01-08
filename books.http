@@ -1,0 +1,28 @@
+
+GET http://localhost:3000/books
+Content-Type: application/json
+
+###
+
+POST http://localhost:3000/books
+Content-Type: application/json
+
+{
+  "title": "Swift",
+  "price": 29.00
+}
+
+###
+
+DELETE  http://localhost:3000/books/3
+Content-Type: application/json
+
+###
+
+PUT http://localhost:3000/books/2
+Content-Type: application/json
+
+{
+  "title": "JavaScript: The Good Part",
+  "price": 99.00
+}
