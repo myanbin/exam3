@@ -23,6 +23,6 @@ PUT http://localhost:3000/books/5e15c409a19c901f6d09f683
 Content-Type: application/json
 
 {
-  "title": "JavaScript: The Good Part",
+  "title": "JavaScript: The AAA Part",
   "price": 99.00
 }

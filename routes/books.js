@@ -18,8 +18,8 @@ router.post('/', function (req, res, next) {
 
 router.put('/:id', function (req, res, next) {
   const book = req.body;
-  const bookid = parseInt(req.params.id);
-  bookDao.updateBook(bookid, body).then(book => {
+  const bookid = req.params.id;
+  bookDao.updateBook(bookid, book).then(book => {
     res.json(book);
   })
 });
