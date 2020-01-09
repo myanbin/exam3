@@ -9,10 +9,15 @@ const BookSchema = Schema({
   price: Number
 });
 
-const UserSchema = Schema({
-  username: String,
-  password: String
+const AlbumSchema = Schema({
+  album_id: String,
+  album_name: String,
+  public_time: Date,
+  week: Number,
+  price: Number,
+  cover: String,
+  singers: [ Schema.Types.Mixed ]
 });
 
 mongoose.model('Book', BookSchema);
-mongoose.model('User', UserSchema);
+mongoose.model('Album', AlbumSchema);

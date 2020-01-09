@@ -1,0 +1,52 @@
+
+GET http://localhost:3000/albums
+Content-Type: application/json
+
+###
+
+POST http://localhost:3000/albums
+Content-Type: application/json
+
+{
+  "album_id": "3751520",
+  "album_name": "依然范特西622266",
+  "public_time": "2007-12-21",
+  "week": 21,
+  "price": 32.99,
+  "cover": "http://imgcache.qq.com/music/photo/album_300/08/300_albumpic_3751508_0.jpg",
+  "singers": [
+    {
+      "singer_id": "220",
+      "singer_name": "周杰伦"
+    },
+    {
+      "singer_id": "220",
+      "singer_name": "lisss"
+    }
+  ]
+}
+
+###
+
+DELETE  http://localhost:3000/albums/3751500
+Content-Type: application/json
+
+###
+
+PUT http://localhost:3000/albums/3751500
+Content-Type: application/json
+
+{
+  "album_id": "3751500",
+  "album_name": "依然范特西111111",
+  "public_time": "2007-12-21",
+  "week": 21,
+  "price": 32.99,
+  "cover": "http://imgcache.qq.com/music/photo/album_300/08/300_albumpic_3751508_0.jpg",
+  "singers": [
+    {
+      "singer_id": "220",
+      "singer_name": "周杰伦"
+    }
+  ]
+}
